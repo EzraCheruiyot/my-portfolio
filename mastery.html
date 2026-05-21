@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ezra Cheruiyot — Claude AI Mastery</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0a0a08;
+  --parchment:#f5f0e8;
+  --gold:#c8a96e;
+  --gold-light:#e0c48a;
+  --gold-dark:#8a6e3e;
+  --warm-white:#faf7f2;
+  --ash:#2a2a24;
+  --mist:#9a9585;
+  --ghost:#4a4a44;
+  --divider:#e8e3d8;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--parchment);font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:1px solid var(--ash);height:64px;}
+.nav-wordmark{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.22em;color:var(--parchment);text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:0;}
+.nav-links a{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ghost);text-decoration:none;padding:0 18px;border-left:1px solid var(--ash);height:64px;display:flex;align-items:center;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a.active{color:var(--gold);}
+
+/* HERO */
+.hero{padding:80px 60px 64px;border-bottom:1px solid var(--ash);max-width:1100px;margin:0 auto;}
+.hero-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:20px;opacity:0.8;}
+.hero-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold);opacity:0.5;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,88px);letter-spacing:0.08em;color:var(--parchment);line-height:0.95;margin-bottom:24px;}
+.hero h1 span{color:var(--gold);}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--mist);max-width:520px;line-height:1.7;margin-bottom:48px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ash);border:1px solid var(--ash);}
+.stat-block{background:var(--ink);padding:24px 28px;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold);letter-spacing:0.04em;line-height:1;display:block;}
+.stat-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-top:6px;display:block;}
+
+/* TAB NAV */
+.tab-nav{position:sticky;top:64px;z-index:99;background:rgba(10,10,8,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--ash);}
+.tab-nav-inner{max-width:1100px;margin:0 auto;padding:0 60px;display:flex;overflow-x:auto;scrollbar-width:none;}
+.tab-nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ghost);background:none;border:none;border-bottom:1px solid transparent;padding:0 20px;height:48px;cursor:pointer;white-space:nowrap;transition:color 0.2s;}
+.tab-btn:hover{color:var(--parchment);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:56px 60px 100px;}
+.view{display:none;}
+.view.active{display:block;}
+.section-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:36px;opacity:0.8;}
+.section-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold);opacity:0.5;}
+
+/* PHASE CARDS */
+.phase-card{border:1px solid var(--ash);margin-bottom:12px;overflow:hidden;}
+.phase-header{display:flex;align-items:center;gap:16px;padding:18px 24px;cursor:pointer;user-select:none;transition:background 0.15s;}
+.phase-header:hover{background:var(--ash);}
+.phase-num{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;padding:4px 12px;border:1px solid;text-transform:uppercase;white-space:nowrap;}
+.phase-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:var(--parchment);flex:1;}
+.phase-meta{font-family:'Space Mono',monospace;font-size:9px;color:var(--mist);white-space:nowrap;letter-spacing:0.15em;}
+.phase-chevron{font-size:10px;color:var(--mist);transition:transform 0.2s;margin-left:8px;}
+.phase-card.open .phase-chevron{transform:rotate(180deg);}
+.phase-bar{height:1px;background:var(--ash);}
+.phase-bar-fill{height:1px;transition:width 0.5s;}
+.phase-body{display:none;padding:8px 0;}
+.phase-card.open .phase-body{display:block;}
+.milestone-row{display:flex;align-items:flex-start;gap:14px;padding:12px 24px;cursor:pointer;transition:background 0.15s;}
+.milestone-row:hover{background:rgba(200,169,110,0.04);}
+.cb{width:16px;height:16px;border:1px solid var(--ash);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;transition:all 0.15s;}
+.cb.done{border-color:var(--gold);background:var(--gold);}
+.cb svg{display:none;}
+.cb.done svg{display:block;}
+.ms-text{flex:1;}
+.ms-title{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--parchment);line-height:1.5;}
+.ms-title.done{color:var(--mist);text-decoration:line-through;text-decoration-color:var(--ash);}
+.ms-meta{font-family:'Space Mono',monospace;font-size:10px;color:var(--mist);margin-top:3px;letter-spacing:0.08em;}
+.phase-deliverable{margin:8px 24px 16px;padding:12px 16px;border:1px solid var(--ash);background:rgba(200,169,110,0.04);}
+.phase-deliverable-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;opacity:0.8;}
+.phase-deliverable-text{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--mist);line-height:1.6;}
+
+/* WINS */
+.wins-form{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap;border:1px solid var(--ash);padding:20px 24px;}
+.wins-form input,.wins-form select{background:transparent;border:none;border-bottom:1px solid var(--ash);color:var(--parchment);padding:8px 0;font-family:'Cormorant Garamond',serif;font-size:15px;outline:none;transition:border-color 0.2s;}
+.wins-form input{flex:1;min-width:200px;}
+.wins-form input::placeholder{color:var(--mist);}
+.wins-form input:focus,.wins-form select:focus{border-bottom-color:var(--gold);}
+.wins-form select{background:var(--ink);color:var(--parchment);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:8px 4px;cursor:pointer;}
+.btn-gold{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;background:var(--gold);color:var(--ink);border:none;padding:10px 24px;cursor:pointer;font-weight:700;transition:background 0.2s;white-space:nowrap;}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-ghost{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;background:transparent;color:var(--ghost);border:1px solid var(--ash);padding:10px 20px;cursor:pointer;transition:color 0.2s,border-color 0.2s;}
+.btn-ghost:hover{color:var(--gold);border-color:var(--gold);}
+.win-item{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border:1px solid var(--ash);margin-bottom:8px;animation:fadeUp 0.2s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+.win-dot{width:6px;height:6px;margin-top:7px;flex-shrink:0;}
+.win-body{flex:1;}
+.win-text{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--parchment);line-height:1.5;}
+.win-meta{font-family:'Space Mono',monospace;font-size:10px;color:var(--mist);margin-top:4px;letter-spacing:0.1em;}
+.win-del{background:none;border:none;color:var(--ash);cursor:pointer;font-size:18px;padding:0 4px;line-height:1;transition:color 0.15s;}
+.win-del:hover{color:var(--gold);}
+.empty{text-align:center;padding:48px 0;font-family:'Space Mono',monospace;font-size:10px;color:var(--ash);letter-spacing:0.15em;text-transform:uppercase;}
+
+/* PORTFOLIO GRID */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--ash);margin-bottom:32px;}
+.portfolio-item{background:var(--ink);padding:28px 24px;border-top:2px solid;}
+.portfolio-item-phase{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;opacity:0.8;}
+.portfolio-item-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.08em;color:var(--parchment);margin-bottom:8px;}
+.portfolio-item-desc{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mist);line-height:1.6;margin-bottom:16px;}
+.portfolio-progress-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--mist);}
+.portfolio-bar-bg{height:1px;background:var(--ash);margin-top:8px;}
+.portfolio-bar-fill{height:1px;transition:width 0.5s;}
+.share-block{border:1px solid var(--ash);padding:28px 32px;}
+.share-block-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0.8;}
+.share-block-text{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--mist);line-height:1.7;margin-bottom:20px;}
+.share-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* PITCH */
+.pitch-block{border-left:2px solid var(--ash);padding:16px 20px;margin-bottom:12px;transition:border-color 0.2s;}
+.pitch-block:hover{border-left-color:var(--gold);}
+.pitch-block-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;opacity:0.8;}
+.pitch-block-text{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--parchment);line-height:1.8;}
+.pitch-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--ash);}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ash);margin-bottom:32px;}
+.about-card{background:var(--ink);padding:28px 24px;}
+.about-card-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0.8;}
+.about-card-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:12px;}
+.about-card-text{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--mist);line-height:1.7;}
+.tools-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.tool-tag{font-family:'Space Mono',monospace;font-size:9px;padding:4px 12px;border:1px solid var(--ash);color:var(--mist);letter-spacing:0.08em;}
+.back-office-block{border:1px solid var(--gold);padding:28px 32px;margin-top:1px;}
+.back-office-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0.8;}
+.back-office-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:12px;}
+.back-office-text{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--mist);line-height:1.8;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--ash);padding:24px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-text{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ash);text-transform:uppercase;}
+
+/* MOBILE NAV */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:200;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--parchment);transition:transform 0.3s,opacity 0.3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.nav-mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--ink);z-index:99;flex-direction:column;padding:32px 24px;border-top:1px solid var(--ash);overflow-y:auto;}
+.nav-mobile-menu.open{display:flex;}
+.nav-mobile-menu a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--ghost);text-decoration:none;padding:20px 0;border-bottom:1px solid var(--ash);transition:color 0.2s;}
+.nav-mobile-menu a:hover{color:var(--gold);}
+.nav-mobile-menu a.mob-active{color:var(--gold);}
+.nav-mobile-menu .mob-cta{margin-top:28px;background:var(--gold);color:var(--ink);text-align:center;padding:18px 24px;font-weight:700;border:none;}
+.nav-mobile-menu .mob-cta:hover{background:var(--gold-light);color:var(--ink);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero{padding:48px 24px 40px;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .tab-nav-inner{padding:0 24px;}
+  .main{padding:40px 24px 80px;}
+  .about-grid{grid-template-columns:1fr;}
+  footer{padding:20px 24px;}
+}
+@media(max-width:540px){
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .wins-form{flex-direction:column;}
+  .wins-form input,.wins-form select{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-wordmark">Ezra Cheruiyot</a>
+  <div class="nav-links">
+    <a href="index.html">Portfolio</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="mastery.html" class="active">AI Mastery</a>
+    <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener" style="background:var(--gold);color:var(--ink);font-weight:700;border-left:1px solid var(--gold-dark);">Hire Me</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="index.html">Portfolio</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#work">Work</a>
+  <a href="index.html#about">About</a>
+  <a href="mastery.html" class="mob-active">AI Mastery</a>
+  <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." class="mob-cta" target="_blank" rel="noopener">Hire Me</a>
+</div>
+
+<div class="hero">
+  <div class="hero-label">Claude AI Mastery · Live proof tracker</div>
+  <h1>Proof I build<br>with AI.<br><span>Not just talk.</span></h1>
+  <p class="hero-sub">A 16-week structured mastery plan — every milestone verified, every result logged. This page updates in real time as I progress.</p>
+  <div class="hero-stats">
+    <div class="stat-block">
+      <span class="stat-num" id="stat-done">0</span>
+      <span class="stat-label">Tasks complete</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num" id="stat-pct">0%</span>
+      <span class="stat-label">Overall progress</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num" id="stat-phase">1</span>
+      <span class="stat-label">Current phase</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num" id="stat-wins">0</span>
+      <span class="stat-label">Wins logged</span>
+    </div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="switchTab('progress',this)">Progress</button>
+    <button class="tab-btn" onclick="switchTab('wins',this)">Wins log</button>
+    <button class="tab-btn" onclick="switchTab('portfolio',this)">Portfolio</button>
+    <button class="tab-btn" onclick="switchTab('pitch',this)">Client pitch</button>
+    <button class="tab-btn" onclick="switchTab('about',this)">About</button>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- PROGRESS -->
+  <div id="view-progress" class="view active">
+    <div class="section-label">16-week mastery plan</div>
+    <div id="phases-container"></div>
+  </div>
+
+  <!-- WINS -->
+  <div id="view-wins" class="view">
+    <div class="section-label">Real results, logged as they happen</div>
+    <div class="wins-form">
+      <input type="text" id="win-input" placeholder="e.g. Built a landing page in 20 mins using Claude Code..."/>
+      <select id="win-phase">
+        <option value="1">Phase 1</option>
+        <option value="2">Phase 2</option>
+        <option value="3">Phase 3</option>
+        <option value="4">Phase 4</option>
+      </select>
+      <button class="btn-gold" onclick="addWin()">+ Log win</button>
+    </div>
+    <div id="wins-list"></div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div id="view-portfolio" class="view">
+    <div class="section-label">Verified deliverables</div>
+    <div id="portfolio-grid" class="portfolio-grid"></div>
+    <div class="share-block">
+      <div class="share-block-label">Share this page</div>
+      <p class="share-block-text">This page lives at a shareable link. Open it on your phone or laptop and hand it to a prospective client. The wins log and completed phases tell the whole story — no explanation needed.</p>
+      <div class="share-actions">
+        <button class="btn-gold" onclick="window.print()">Print / Save PDF</button>
+        <button class="btn-ghost" onclick="copyLink()">Copy page link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PITCH -->
+  <div id="view-pitch" class="view">
+    <div class="section-label">Live client pitch — updates as you progress</div>
+    <div id="pitch-content"></div>
+    <div class="pitch-actions">
+      <button class="btn-gold" onclick="copyPitch()">Copy pitch text</button>
+      <button class="btn-ghost" onclick="window.print()">Print as PDF</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="view-about" class="view">
+    <div class="section-label">Background</div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-label">Who I am</div>
+        <div class="about-card-title">Ezra Cheruiyot</div>
+        <div class="about-card-text">Digital Marketing Specialist based in Nairobi, Kenya. I use Claude AI daily — for strategy, content, web pages, and client work. This page tracks how deep the mastery goes.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">What this is</div>
+        <div class="about-card-title">Proof of work</div>
+        <div class="about-card-text">A live 16-week mastery plan. Every milestone completed is verified here. Every real result is logged. This isn't a course certificate — it's documented evidence of capability.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Tools I use</div>
+        <div class="about-card-title">The stack</div>
+        <div class="about-card-text">
+          <div class="tools-list">
+            <span class="tool-tag">Claude AI</span>
+            <span class="tool-tag">Claude Code</span>
+            <span class="tool-tag">VS Code</span>
+            <span class="tool-tag">Cowork</span>
+            <span class="tool-tag">Canva</span>
+            <span class="tool-tag">Meta Ads</span>
+            <span class="tool-tag">Netlify</span>
+            <span class="tool-tag">Mailchimp</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">What I offer</div>
+        <div class="about-card-title">AI-powered delivery</div>
+        <div class="about-card-text">Strategy, Meta Ads, content creation, and email marketing — all delivered faster and at a quality level that would cost 3–5× more from a traditional agency. Human-directed, AI-assisted.</div>
+      </div>
+    </div>
+    <div class="back-office-block">
+      <div class="back-office-label">Coming soon · Micro-agency concept</div>
+      <div class="back-office-title">The Back Office</div>
+      <p class="back-office-text">A premium AI-powered digital marketing service built for Nairobi businesses — strategy, content, ads, and brand assets delivered with the speed of AI and the judgment of a senior marketer. Not a freelancer. Not an agency. Something in between, and better than both. Phase 4 of this mastery plan is where it launches.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span class="footer-text">Ezra Cheruiyot · Claude AI Mastery · <a href="index.html" style="color:var(--gold);text-decoration:none;">← Back to portfolio</a></span>
+  <span class="footer-text" id="last-updated"></span>
+</footer>
+
+<script>
+const PHASES=[
+  {
+    id:1,name:"Prompt craft mastery",weeks:"Weeks 1–3",color:"#c8a96e",
+    milestones:[
+      {id:"1a",text:"Master role + context + format prompting",meta:"Apply to 5 real work tasks"},
+      {id:"1b",text:"Build personal prompt library — 10+ reusable templates",meta:"Social captions, ad copy, briefs, emails"},
+      {id:"1c",text:"Learn chain prompting vs. single prompts",meta:"Know when to use each"},
+      {id:"1d",text:"Set up system instructions for brand voice inside a Claude Project",meta:"Tone, style, audience baked in"},
+      {id:"1e",text:"Cut revision cycles in half on one content type",meta:"Measure before vs. after"}
+    ],
+    deliverable:"Personal prompt library — 10+ reusable templates for daily digital marketing tasks"
+  },
+  {
+    id:2,name:"Claude Code fluency",weeks:"Weeks 3–6",color:"#e0c48a",
+    milestones:[
+      {id:"2a",text:"Refactor an existing page via Claude Code",meta:"Cleaner code, same output"},
+      {id:"2b",text:"Debug using terminal error output directly",meta:"Paste errors, let Claude fix them"},
+      {id:"2c",text:"Build a reusable landing page template system",meta:"Assemble pages without rebuilding from scratch"},
+      {id:"2d",text:"Use Claude Code for copy and content inside VS Code",meta:"Without leaving the editor"},
+      {id:"2e",text:"Ship one page faster than ever before",meta:"Log the time saved as a win"}
+    ],
+    deliverable:"Reusable landing page system — components any client can build on"
+  },
+  {
+    id:3,name:"Projects, memory & Cowork",weeks:"Weeks 6–10",color:"#f5f0e8",
+    milestones:[
+      {id:"3a",text:"Create a Claude Project for client work",meta:"Brand voice, tone, audience baked in"},
+      {id:"3b",text:"Configure memory with key preferences",meta:"Formats, style, recurring context"},
+      {id:"3c",text:"First Cowork automation — one repetitive task",meta:"File management or content batch"},
+      {id:"3d",text:"Process a full content batch in one session",meta:"Multiple pieces, not one by one"},
+      {id:"3e",text:"Measure time saved vs. old workflow",meta:"Numbers make the best proof"}
+    ],
+    deliverable:"Configured Project + one working Cowork automation for batch content"
+  },
+  {
+    id:4,name:"Building with Claude",weeks:"Weeks 10–16",color:"#8a6e3e",
+    milestones:[
+      {id:"4a",text:"Build one internal tool for your own workflow",meta:"Content generator, brief form, or dashboard"},
+      {id:"4b",text:"Build one client-facing tool",meta:"Social post generator or proposal drafter"},
+      {id:"4c",text:"Complete first Back Office outreach — 3 Nairobi businesses",meta:"Use your pitch script from this page"},
+      {id:"4d",text:"Land first paying Back Office client",meta:"The real proof of concept"},
+      {id:"4e",text:"Document results with specifics",meta:"Screenshots, metrics, testimonial"}
+    ],
+    deliverable:"First paying Back Office client + documented portfolio proof — real results, real numbers"
+  }
+];
+
+let state={checked:{},wins:[],nextWinId:1};
+
+function load(){try{const s=localStorage.getItem('ezra_mastery_v3');if(s)state=JSON.parse(s);}catch(e){}}
+function save(){try{localStorage.setItem('ezra_mastery_v3',JSON.stringify(state));document.getElementById('last-updated').textContent='Updated '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}catch(e){}}
+
+function getStats(){
+  const total=PHASES.reduce((s,p)=>s+p.milestones.length,0);
+  const done=Object.values(state.checked).filter(Boolean).length;
+  const pct=Math.round(done/total*100);
+  let phase=4;
+  for(let p of PHASES){if(p.milestones.some(m=>!state.checked[m.id])){phase=p.id;break;}}
+  return{total,done,pct,phase};
+}
+
+function updateStats(){
+  const s=getStats();
+  document.getElementById('stat-done').textContent=s.done;
+  document.getElementById('stat-pct').textContent=s.pct+'%';
+  document.getElementById('stat-phase').textContent=s.phase;
+  document.getElementById('stat-wins').textContent=state.wins.length;
+}
+
+function renderProgress(){
+  const c=document.getElementById('phases-container');
+  c.innerHTML='';
+  PHASES.forEach(p=>{
+    const done=p.milestones.filter(m=>state.checked[m.id]).length;
+    const pct=Math.round(done/p.milestones.length*100);
+    const card=document.createElement('div');
+    card.className='phase-card';
+    card.innerHTML=`
+      <div class="phase-header" onclick="togglePhase(this.parentElement)">
+        <span class="phase-num" style="color:${p.color};border-color:${p.color};opacity:0.8;">Phase ${p.id}</span>
+        <span class="phase-title">${p.name}</span>
+        <span class="phase-meta">${done}/${p.milestones.length} · ${p.weeks}</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+      <div class="phase-bar"><div class="phase-bar-fill" style="width:${pct}%;background:${p.color};"></div></div>
+      <div class="phase-body">
+        ${p.milestones.map(m=>`
+          <div class="milestone-row" onclick="toggle('${m.id}')">
+            <div class="cb ${state.checked[m.id]?'done':''}">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3 5.5L8 1" stroke="#0a0a08" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="ms-text">
+              <div class="ms-title ${state.checked[m.id]?'done':''}">${m.text}</div>
+              <div class="ms-meta">${m.meta}</div>
+            </div>
+          </div>
+        `).join('')}
+        <div class="phase-deliverable">
+          <div class="phase-deliverable-label">Deliverable</div>
+          <div class="phase-deliverable-text">${p.deliverable}</div>
+        </div>
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+function togglePhase(card){card.classList.toggle('open');}
+
+function toggle(id){
+  state.checked[id]=!state.checked[id];
+  save();renderProgress();renderPortfolio();renderPitch();updateStats();
+}
+
+function renderWins(){
+  const list=document.getElementById('wins-list');
+  document.getElementById('stat-wins').textContent=state.wins.length;
+  if(!state.wins.length){
+    list.innerHTML='<div class="empty">No wins logged yet — add your first one above</div>';return;
+  }
+  const colors=['#c8a96e','#e0c48a','#f5f0e8','#8a6e3e'];
+  list.innerHTML=state.wins.slice().reverse().map(w=>`
+    <div class="win-item">
+      <div class="win-dot" style="background:${colors[w.phase-1]};width:6px;height:6px;flex-shrink:0;margin-top:7px;"></div>
+      <div class="win-body">
+        <div class="win-text">${w.text}</div>
+        <div class="win-meta">Phase ${w.phase} · ${w.date}</div>
+      </div>
+      <button class="win-del" onclick="delWin(${w.id})" aria-label="Delete">×</button>
+    </div>
+  `).join('');
+}
+
+function addWin(){
+  const inp=document.getElementById('win-input');
+  const ph=parseInt(document.getElementById('win-phase').value);
+  const txt=inp.value.trim();
+  if(!txt)return;
+  state.wins.push({id:state.nextWinId++,text:txt,phase:ph,date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})});
+  inp.value='';
+  save();renderWins();renderPitch();
+}
+
+function delWin(id){
+  state.wins=state.wins.filter(w=>w.id!==id);
+  save();renderWins();renderPitch();
+}
+
+function renderPortfolio(){
+  const grid=document.getElementById('portfolio-grid');
+  const active=PHASES.filter(p=>p.milestones.some(m=>state.checked[m.id]));
+  if(!active.length){
+    grid.innerHTML='<div class="empty" style="grid-column:1/-1;padding:48px 0;">Complete milestones to build your verified portfolio — each phase adds a card here</div>';
+    return;
+  }
+  grid.innerHTML=active.map(p=>{
+    const done=p.milestones.filter(m=>state.checked[m.id]).length;
+    const pct=Math.round(done/p.milestones.length*100);
+    return`<div class="portfolio-item" style="border-top-color:${p.color};">
+      <div class="portfolio-item-phase" style="color:${p.color};">Phase ${p.id} · ${p.name}</div>
+      <div class="portfolio-item-title">${p.deliverable.split('—')[0].trim()}</div>
+      <div class="portfolio-item-desc">${p.deliverable}</div>
+      <div class="portfolio-progress-label">${done}/${p.milestones.length} milestones · ${pct}%</div>
+      <div class="portfolio-bar-bg"><div class="portfolio-bar-fill" style="width:${pct}%;background:${p.color};"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderPitch(){
+  const s=getStats();
+  const completed=PHASES.filter(p=>p.milestones.every(m=>state.checked[m.id]));
+  const winsCount=state.wins.length;
+  const recentWins=state.wins.slice(-2).map(w=>w.text).join('; ');
+  const weeksIn=(s.phase-1)*3;
+  const blocks=[
+    {
+      label:"Opening",
+      text:`I've spent ${weeksIn>0?weeksIn+'+':'the last few'} weeks systematically mastering Claude AI as a digital marketing tool — not just using it casually, but building real workflows, shipping real deliverables, and documenting every result on a live proof page.`
+    },
+    {
+      label:"Proof of work",
+      text:completed.length>0
+        ?`I've completed ${completed.length} phase${completed.length>1?'s':''} of a structured 16-week mastery plan. Verified deliverables include: ${completed.map(p=>p.deliverable.split('—')[0].trim()).join(', ')}.`
+        :`I'm in Phase ${s.phase} of a structured 16-week mastery plan — ${s.done} milestones verified and documented. The live proof page you're looking at right now is the evidence.`
+    },
+    {
+      label:"What I can do for you",
+      text:"I produce social content, ad copy, campaign strategies, landing pages, and branded materials — faster and at a quality level that would cost 3–5× more from a traditional agency. Every deliverable is AI-assisted but human-directed, strategy-first, and backed by real results."
+    },
+    {
+      label:"Real results",
+      text:winsCount>0
+        ?`I've logged ${winsCount} real result${winsCount>1?'s':''} so far — including: ${recentWins||'time saved, content delivered, client work completed'}. All documented on this page.`
+        :"Every result I produce gets logged on this page with specifics — time saved, output quality, turnaround speed. The numbers build quickly."
+    },
+    {
+      label:"The Back Office",
+      text:"I'm building a premium AI-powered marketing service for Nairobi businesses — The Back Office. Not a freelancer. Not an agency. A leaner, faster, and smarter alternative to both. If you want to be one of the first clients, the conversation starts on WhatsApp."
+    },
+    {
+      label:"The ask",
+      text:"I'm not asking you to take my word for it. Let me do one piece of work for you this week — on a trial basis — and you'll see the difference. If it doesn't deliver, you owe me nothing."
+    }
+  ];
+  document.getElementById('pitch-content').innerHTML=blocks.map(b=>`
+    <div class="pitch-block">
+      <div class="pitch-block-label">${b.label}</div>
+      <div class="pitch-block-text">${b.text}</div>
+    </div>
+  `).join('');
+}
+
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('view-'+name).classList.add('active');
+}
+
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied!')).catch(()=>alert('Copy the URL from your browser address bar.'));
+}
+
+function copyPitch(){
+  const blocks=document.querySelectorAll('.pitch-block-text');
+  const text=Array.from(blocks).map(b=>b.textContent).join('\n\n');
+  navigator.clipboard.writeText(text).then(()=>alert('Pitch copied to clipboard!')).catch(()=>alert('Select the text manually to copy.'));
+}
+
+load();updateStats();renderProgress();renderWins();renderPortfolio();renderPitch();
+try{const lu=localStorage.getItem('ezra_mastery_v3');if(lu){const s=JSON.parse(lu);if(s.wins&&s.wins.length>0){const last=s.wins[s.wins.length-1];document.getElementById('last-updated').textContent='Updated '+last.date;}}}catch(e){}
+
+(function(){
+  var btn=document.getElementById('navHamburger');
+  var menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  var links=menu.querySelectorAll('a');
+  function close(){btn.classList.remove('open');menu.classList.remove('open');document.body.style.overflow='';}
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    btn.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  links.forEach(function(a){if(!a.getAttribute('target'))a.addEventListener('click',close);});
+})();
+</script>
+</body>
+</html>
+

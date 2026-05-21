@@ -1,0 +1,952 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ezra Cheruiyot — Digital Marketing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0a0a08;
+  --parchment:#f5f0e8;
+  --gold:#c8a96e;
+  --gold-light:#e0c48a;
+  --gold-dark:#8a6e3e;
+  --warm-white:#faf7f2;
+  --ash:#2a2a24;
+  --mist:#9a9585;
+  --ghost:#4a4a44;
+  --divider:#e8e3d8;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{
+  background:var(--warm-white);
+  color:var(--ink);
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 60px;
+  border-bottom:1px solid var(--ash);
+  height:64px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;
+}
+.nav-wordmark{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:0.22em;
+  color:var(--parchment);
+}
+.nav-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:11px;
+  letter-spacing:0.3em;color:var(--gold);
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex;align-items:center;gap:0;
+}
+.nav-links a{
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ghost);text-decoration:none;
+  padding:0 18px;
+  border-left:1px solid var(--ash);
+  height:64px;
+  display:flex;align-items:center;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  background:var(--gold);
+  color:var(--ink) !important;
+  padding:0 24px !important;
+  border-left:1px solid var(--gold-dark) !important;
+  font-weight:700;
+  height:64px;
+  display:flex;align-items:center;
+  text-decoration:none;
+  transition:background 0.2s !important;
+}
+.nav-cta:hover{background:var(--gold-light) !important;}
+
+/* ── HERO ── */
+.hero{
+  background:var(--ink);
+  min-height:calc(100vh - 64px);
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:0;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 70% at 30% 50%, #141410 0%, #0a0a08 100%);
+  pointer-events:none;
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:80px 60px 80px 60px;
+  display:flex;flex-direction:column;
+  justify-content:center;
+}
+.hero-label{
+  font-family:'Space Mono',monospace;
+  font-size:10px;letter-spacing:0.4em;color:var(--gold);
+  text-transform:uppercase;
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:28px;
+  opacity:0;
+  animation:fadeUp 0.7s ease forwards;
+  animation-delay:0.1s;
+}
+.hero-label::before{
+  content:'';display:block;
+  width:36px;height:1px;background:var(--gold);opacity:0.5;
+}
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(64px,8.5vw,108px);
+  letter-spacing:0.08em;
+  color:var(--parchment);
+  line-height:0.95;
+  margin-bottom:28px;
+  opacity:0;
+  animation:fadeUp 0.7s ease forwards;
+  animation-delay:0.25s;
+}
+.hero-name span{
+  display:block;color:var(--gold);
+}
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;
+  font-size:clamp(17px,2vw,22px);
+  letter-spacing:0.08em;
+  color:var(--mist);
+  max-width:480px;
+  line-height:1.6;
+  margin-bottom:40px;
+  opacity:0;
+  animation:fadeUp 0.7s ease forwards;
+  animation-delay:0.4s;
+}
+.hero-rule{
+  width:56px;height:1px;
+  background:var(--gold);opacity:0.4;
+  margin-bottom:36px;
+  opacity:0;
+  animation:fadeIn 0.7s ease forwards;
+  animation-delay:0.55s;
+}
+.hero-skills{
+  display:flex;gap:12px;flex-wrap:wrap;
+  margin-bottom:48px;
+  opacity:0;
+  animation:fadeUp 0.7s ease forwards;
+  animation-delay:0.6s;
+}
+.skill-pill{
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ghost);
+  border:1px solid var(--ash);
+  padding:7px 14px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  opacity:0;
+  animation:fadeUp 0.7s ease forwards;
+  animation-delay:0.75s;
+}
+.btn-primary{
+  font-family:'Space Mono',monospace;
+  font-size:10px;letter-spacing:0.25em;text-transform:uppercase;
+  background:var(--gold);
+  color:var(--ink);
+  padding:16px 36px;
+  text-decoration:none;
+  font-weight:700;
+  transition:background 0.2s, letter-spacing 0.2s;
+  display:inline-block;
+}
+.btn-primary:hover{
+  background:var(--gold-light);
+  letter-spacing:0.35em;
+}
+.btn-secondary{
+  font-family:'Space Mono',monospace;
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ghost);
+  text-decoration:none;
+  border-bottom:1px solid var(--ash);
+  padding-bottom:2px;
+  transition:color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover{color:var(--gold);border-color:var(--gold);}
+
+/* ── HERO PHOTO ── */
+.hero-photo-col{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-photo-frame{
+  position:relative;
+  width:100%;
+  opacity:0;
+  animation:fadeUp 0.9s ease forwards;
+  animation-delay:0.3s;
+}
+.hero-photo-frame::before{
+  content:'';
+  position:absolute;
+  top:-16px;left:-16px;
+  width:100%;height:100%;
+  border:1px solid var(--gold);
+  opacity:0.25;
+  pointer-events:none;
+}
+.hero-photo-frame img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:contrast(1.05) brightness(0.92);
+}
+.hero-photo-caption{
+  position:absolute;
+  bottom:20px;left:-20px;
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:0.3em;
+  color:var(--gold);text-transform:uppercase;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  opacity:0.6;
+}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-hint{
+  position:absolute;
+  bottom:40px;left:60px;
+  display:flex;align-items:center;gap:12px;
+  font-family:'Space Mono',monospace;
+  font-size:9px;letter-spacing:0.3em;
+  color:var(--ghost);text-transform:uppercase;
+  opacity:0;
+  animation:fadeIn 1s ease forwards;
+  animation-delay:1.2s;
+  z-index:3;
+}
+.scroll-line{
+  width:40px;height:1px;
+  background:var(--ghost);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{width:40px;opacity:0.4;}
+  50%{width:60px;opacity:0.8;}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ── PLACEHOLDER SECTIONS ── */
+.section-coming{
+  padding:120px 60px;
+  max-width:1100px;
+  margin:0 auto;
+  border-bottom:1px solid var(--divider);
+  text-align:center;
+}
+.section-coming-label{
+  font-family:'Space Mono',monospace;
+  font-size:10px;letter-spacing:0.35em;color:var(--mist);
+  text-transform:uppercase;margin-bottom:16px;
+}
+.section-coming h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(36px,5vw,60px);
+  letter-spacing:0.1em;color:var(--ink);font-weight:400;
+}
+
+/* ── MOBILE NAV ── */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  cursor:pointer;
+  background:none;
+  border:none;
+  padding:8px;
+  z-index:200;
+}
+.nav-hamburger span{
+  display:block;
+  width:22px;height:1.5px;
+  background:var(--parchment);
+  transition:transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+.nav-mobile-menu{
+  display:none;
+  position:fixed;
+  top:64px;left:0;right:0;bottom:0;
+  background:var(--ink);
+  z-index:99;
+  flex-direction:column;
+  padding:32px 24px;
+  border-top:1px solid var(--ash);
+  overflow-y:auto;
+}
+.nav-mobile-menu.open{display:flex;}
+.nav-mobile-menu a{
+  font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--ghost);text-decoration:none;
+  padding:20px 0;
+  border-bottom:1px solid var(--ash);
+  transition:color 0.2s;
+}
+.nav-mobile-menu a:hover{color:var(--gold);}
+.nav-mobile-menu .mob-cta{
+  margin-top:28px;
+  background:var(--gold);
+  color:var(--ink);
+  text-align:center;
+  padding:18px 24px;
+  font-weight:700;
+  border:none;
+}
+.nav-mobile-menu .mob-cta:hover{background:var(--gold-light);color:var(--ink);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  /* NAV */
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+
+  /* HERO */
+  .hero{
+    grid-template-columns:1fr;
+    min-height:100svh;
+    min-height:100vh;
+  }
+  .hero::before{
+    background:radial-gradient(ellipse 90% 55% at 50% 35%, #141410 0%, #0a0a08 100%);
+  }
+  .hero-content{
+    padding:52px 24px 40px;
+  }
+  .hero-label{font-size:9px;letter-spacing:0.3em;margin-bottom:20px;}
+  .hero-name{
+    font-size:clamp(52px,16vw,80px);
+    margin-bottom:16px;
+  }
+  .hero-tagline{
+    font-size:16px;
+    max-width:100%;
+    margin-bottom:28px;
+  }
+  .hero-rule{margin-bottom:20px;}
+  .hero-skills{gap:8px;margin-bottom:28px;}
+  .skill-pill{font-size:8px;padding:6px 11px;}
+  .hero-cta{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+    width:100%;
+  }
+  .btn-primary{text-align:center;padding:18px 24px;width:100%;}
+  .btn-secondary{text-align:center;align-self:center;}
+
+  /* PHOTO */
+  .hero-photo-col{
+    height:380px;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-photo-frame{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+  .hero-photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+  }
+
+  /* SCROLL HINT */
+  .scroll-hint{left:24px;bottom:20px;}
+
+  /* SECTIONS */
+  .section-coming{padding:80px 24px;}
+
+  /* AI MASTERY SECTION */
+  #ai-mastery{padding:80px 24px;}
+  #ai-mastery > div > div:nth-child(2){grid-template-columns:1fr;}
+  #ai-mastery > div > div:last-child{grid-template-columns:1fr;gap:24px;padding:28px 24px;}
+  #ai-mastery > div > div:last-child > div:last-child{text-align:left;}
+
+  /* ── GLOBAL MOBILE OVERFLOW FIXES ── */
+
+  /* All sections: reduce horizontal padding to stop overflow */
+  section[style]{padding-left:20px !important;padding-right:20px !important;}
+  #services,#work,#about{padding-top:64px !important;padding-bottom:64px !important;}
+  section:not([id])[style*="padding:100px"]{padding-top:64px !important;padding-bottom:64px !important;}
+
+  /* Collapse all fixed 2-column grids */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1fr 340px"],
+  [style*="grid-template-columns:1fr auto"]{
+    grid-template-columns:1fr !important;
+    gap:28px !important;
+  }
+
+  /* Compact inner card paddings */
+  [style*="padding:48px"]{padding:24px 16px !important;}
+  [style*="padding:40px 48px"]{padding:24px 16px !important;}
+  [style*="padding:36px 40px"]{padding:20px 16px !important;}
+  [style*="padding:28px 32px"]{padding:20px 16px !important;}
+
+  /* Footer */
+  footer[style]{padding:20px !important;}
+
+  /* Images always contained */
+  img{max-width:100%;height:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div>
+      <div class="nav-wordmark">Ezra Cheruiyot</div>
+      <div class="nav-sub">Digital Marketing · Design · Video</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#ai-mastery">AI Mastery</a>
+    <a href="https://wa.me/254746604694" class="nav-cta" target="_blank" rel="noopener">Hire Me</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#work" class="mob-link">Work</a>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#ai-mastery" class="mob-link">AI Mastery</a>
+  <a href="https://wa.me/254746604694" class="mob-cta" target="_blank" rel="noopener">Hire Me</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-label">Nairobi, Kenya · Available for Freelance</div>
+    <h1 class="hero-name">
+      Ezra<br>
+      <span>Cheruiyot</span>
+    </h1>
+    <p class="hero-tagline">
+      Marketing that moves. Design that speaks. Video that stays.
+    </p>
+    <div class="hero-rule"></div>
+    <div class="hero-skills">
+      <span class="skill-pill">Digital Marketing</span>
+      <span class="skill-pill">Canva Design</span>
+      <span class="skill-pill">Video Editing</span>
+      <span class="skill-pill">Social Strategy</span>
+      <span class="skill-pill">Brand Identity</span>
+    </div>
+    <div class="hero-cta">
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20work%20with%20you." class="btn-primary" target="_blank" rel="noopener">
+        Start a Project
+      </a>
+      <a href="#work" class="btn-secondary">See My Work →</a>
+    </div>
+  </div>
+
+  <div class="hero-photo-col">
+    <div class="hero-photo-frame">
+      <img src="ezra-hero.jpg" alt="Ezra Cheruiyot — Digital Marketing Specialist"/>
+      <div class="hero-photo-caption">Ezra Cheruiyot · 2025</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+
+<!-- ══ SERVICES ══ -->
+<section id="services" style="background:var(--warm-white);padding:100px 60px;">
+<div style="max-width:1100px;margin:0 auto;">
+
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+    <span style="display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;"></span>
+    <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">02 — Services</span>
+  </div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:64px;">
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);letter-spacing:0.1em;color:var(--ink);font-weight:400;line-height:1;">What I Can Do<br>For Your Brand</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--ghost);max-width:380px;line-height:1.7;">Every service is rooted in strategy first. I don't execute blindly — I make sure the work is the right work before it begins.</p>
+  </div>
+
+  <!-- S-TIER CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--divider);margin-bottom:1px;">
+
+    <div style="background:var(--ink);padding:48px 40px;position:relative;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;opacity:0.8;">S-Tier · Flagship</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.1em;color:var(--parchment);font-weight:400;line-height:1.1;margin-bottom:16px;">Digital Marketing Strategy</h3>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:var(--mist);line-height:1.8;margin-bottom:28px;">Full-quarter marketing plans, audience research, and content calendars built around what your specific business needs — not templates.</p>
+      <div style="width:40px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:24px;"></div>
+      <ul style="list-style:none;margin-bottom:36px;">
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;border-bottom:1px solid var(--ash);">→ Marketing strategy &amp; audience research</li>
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;border-bottom:1px solid var(--ash);">→ Monthly content calendar (30 days planned)</li>
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;border-bottom:1px solid var(--ash);">→ Campaign planning &amp; brief writing</li>
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;">→ Monthly performance review call</li>
+      </ul>
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:24px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);letter-spacing:0.05em;">From KES 40,000</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ghost);letter-spacing:0.2em;">/ MONTH</span>
+      </div>
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27m%20interested%20in%20your%20Digital%20Marketing%20Strategy%20service." target="_blank" rel="noopener" style="display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:13px 28px;text-decoration:none;font-weight:700;transition:background 0.2s;">Enquire on WhatsApp</a>
+    </div>
+
+    <div style="background:var(--ink);padding:48px 40px;position:relative;border-left:1px solid var(--ash);">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;opacity:0.8;">S-Tier · Flagship</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.1em;color:var(--parchment);font-weight:400;line-height:1.1;margin-bottom:16px;">Meta Ads Management</h3>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:var(--mist);line-height:1.8;margin-bottom:28px;">Data-driven Meta campaigns with continuous optimisation. I've generated leads at under €0.40 cost-per-result — and I bring that same discipline to every client.</p>
+      <div style="width:40px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:24px;"></div>
+      <ul style="list-style:none;margin-bottom:36px;">
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;border-bottom:1px solid var(--ash);">→ Campaign setup &amp; audience targeting</li>
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;border-bottom:1px solid var(--ash);">→ Ad creative design (graphics + copy)</li>
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;border-bottom:1px solid var(--ash);">→ A/B testing &amp; weekly optimisation</li>
+        <li style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--ghost);padding:7px 0;">→ Monthly results report with insights</li>
+      </ul>
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--gold);letter-spacing:0.05em;">From KES 30,000</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ghost);letter-spacing:0.2em;">/ MONTH</span>
+      </div>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ghost);letter-spacing:0.1em;margin-bottom:24px;opacity:0.7;">+ client's ad budget (separate)</p>
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27m%20interested%20in%20your%20Meta%20Ads%20Management%20service." target="_blank" rel="noopener" style="display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:13px 28px;text-decoration:none;font-weight:700;">Enquire on WhatsApp</a>
+    </div>
+
+  </div>
+
+  <!-- A-TIER CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--divider);margin-bottom:48px;">
+
+    <div style="background:var(--parchment);padding:40px;border-top:none;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:16px;opacity:0.8;">A-Tier · Core Service</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.1em;color:var(--ink);font-weight:400;margin-bottom:12px;">Content Creation</h3>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:15px;color:var(--ghost);line-height:1.8;margin-bottom:20px;">Social graphics, captions, and blog articles — all designed to build brand authority and drive consistent organic engagement.</p>
+      <ul style="list-style:none;margin-bottom:24px;">
+        <li style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ghost);padding:6px 0;border-bottom:1px solid var(--divider);">→ 16 social media graphics (Canva)</li>
+        <li style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ghost);padding:6px 0;border-bottom:1px solid var(--divider);">→ 16 captions + hashtag sets</li>
+        <li style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ghost);padding:6px 0;">→ 2 blog articles (800–1,000 words)</li>
+      </ul>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:20px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ink);letter-spacing:0.05em;">From KES 22,000</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;color:var(--mist);letter-spacing:0.2em;">/ MONTH</span>
+      </div>
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27m%20interested%20in%20your%20Content%20Creation%20service." target="_blank" rel="noopener" style="display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);padding:11px 24px;text-decoration:none;font-weight:700;">Enquire on WhatsApp</a>
+    </div>
+
+    <div style="background:var(--parchment);padding:40px;border-left:1px solid var(--divider);">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:16px;opacity:0.8;">A-Tier · Core Service</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.1em;color:var(--ink);font-weight:400;margin-bottom:12px;">Email Marketing</h3>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:15px;color:var(--ghost);line-height:1.8;margin-bottom:20px;">Well-crafted email campaigns — from copywriting and template design to setup, delivery, and performance reporting.</p>
+      <ul style="list-style:none;margin-bottom:24px;">
+        <li style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ghost);padding:6px 0;border-bottom:1px solid var(--divider);">→ Email copywriting &amp; Canva template</li>
+        <li style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ghost);padding:6px 0;border-bottom:1px solid var(--divider);">→ Setup on Mailchimp / MailerLite</li>
+        <li style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ghost);padding:6px 0;">→ Send + performance report</li>
+      </ul>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ink);letter-spacing:0.05em;">KES 12,000</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;color:var(--mist);letter-spacing:0.2em;">/ CAMPAIGN</span>
+      </div>
+      <p style="font-family:'Space Mono',monospace;font-size:9px;color:var(--mist);letter-spacing:0.1em;margin-bottom:20px;">3 campaigns = KES 30,000</p>
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27m%20interested%20in%20your%20Email%20Marketing%20service." target="_blank" rel="noopener" style="display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;border:1px solid var(--ink);color:var(--ink);padding:11px 24px;text-decoration:none;font-weight:700;">Enquire on WhatsApp</a>
+    </div>
+
+  </div>
+
+  <!-- ADD-ONS NOTE -->
+  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:24px 32px;background:var(--parchment);border:1px solid var(--divider);">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--gold-dark);text-transform:uppercase;white-space:nowrap;">Add-ons available</div>
+    <div style="width:1px;height:28px;background:var(--divider);"></div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ghost);">Brand style guide (KES 25,000) · Landing page design (KES 20,000) · Email template design (KES 8,000)</p>
+    <div style="margin-left:auto;">
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);text-decoration:none;border-bottom:1px solid var(--gold-dark);padding-bottom:2px;">Bundle &amp; save →</a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══ CASE STUDY ══ -->
+<section id="work" style="background:var(--ink);padding:100px 60px;">
+<div style="max-width:1100px;margin:0 auto;">
+
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+    <span style="display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;"></span>
+    <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">03 — Work</span>
+  </div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:72px;">
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);letter-spacing:0.1em;color:var(--parchment);font-weight:400;line-height:1;">Proof Over<br>Promise</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--mist);max-width:380px;line-height:1.7;">One client. One ecosystem. Built from strategy to execution — and the numbers tell the rest.</p>
+  </div>
+
+  <!-- CASE STUDY CARD -->
+  <div style="border:1px solid var(--ash);">
+
+    <!-- Card Header -->
+    <div style="padding:40px 48px;border-bottom:1px solid var(--ash);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;">Case Study · 2025–2026</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,42px);letter-spacing:0.08em;color:var(--parchment);font-weight:400;line-height:1.1;margin-bottom:8px;">Pan-African B2B Trade Platform</h3>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--mist);">Full digital marketing ecosystem · Kenya · Confidential client</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--ghost);border:1px solid var(--ash);padding:5px 12px;">Meta Ads</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--ghost);border:1px solid var(--ash);padding:5px 12px;">Strategy</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--ghost);border:1px solid var(--ash);padding:5px 12px;">Content</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--ghost);border:1px solid var(--ash);padding:5px 12px;">Funnel Design</span>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;">
+      <div style="padding:36px 32px;border-right:1px solid var(--ash);border-bottom:1px solid var(--ash);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);letter-spacing:0.04em;line-height:1;">2.8M</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-top:6px;">Impressions across Africa</div>
+      </div>
+      <div style="padding:36px 32px;border-right:1px solid var(--ash);border-bottom:1px solid var(--ash);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);letter-spacing:0.04em;line-height:1;">2.1M</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-top:6px;">Unique accounts reached</div>
+      </div>
+      <div style="padding:36px 32px;border-right:1px solid var(--ash);border-bottom:1px solid var(--ash);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);letter-spacing:0.04em;line-height:1;">31</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-top:6px;">Campaigns built &amp; tested</div>
+      </div>
+      <div style="padding:36px 32px;border-bottom:1px solid var(--ash);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);letter-spacing:0.04em;line-height:1;">€0.37</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-top:6px;">Cost per vendor signup</div>
+      </div>
+    </div>
+
+    <!-- Story -->
+    <div style="padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.8;">The Challenge</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:var(--mist);line-height:1.9;">A new B2B trade platform needed to acquire verified vendors across Africa — with limited budget, no existing audience, and a product most SMEs had never heard of. Standard lead generation campaigns weren't working.</p>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.8;">The Breakthrough</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:var(--mist);line-height:1.9;">After testing three ad set approaches, a traffic-to-signup-page model paired with organic content alignment delivered <span style="color:var(--gold-light);font-style:italic;">132 vendor signups in 2 weeks from €49 in ad spend</span> — a €0.37 cost per registration that became the foundation for all future scaling.</p>
+      </div>
+    </div>
+
+    <!-- What Was Delivered -->
+    <div style="padding:0 48px 48px;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;opacity:0.8;">What Was Delivered</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+        <div style="border:1px solid var(--ash);padding:20px 22px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:6px;">Full Q2 Growth Plan</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ghost);line-height:1.6;">3-month strategy with 11-week content calendar, ad framework, KPIs, and Q3 bridge.</div>
+        </div>
+        <div style="border:1px solid var(--ash);padding:20px 22px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:6px;">Content–Ad Alignment System</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ghost);line-height:1.6;">Every organic Friday post mirrored the active Meta Ad — same CTA, same destination, same language.</div>
+        </div>
+        <div style="border:1px solid var(--ash);padding:20px 22px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:6px;">Vendor Activation Funnel</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ghost);line-height:1.6;">30-day email + content sequence to move signups from registration to active vendor profile.</div>
+        </div>
+        <div style="border:1px solid var(--ash);padding:20px 22px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:6px;">A/B Testing Discipline</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ghost);line-height:1.6;">3 concurrent ad approaches tested in Q1 to isolate the winning mechanic before scaling budget.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer quote -->
+    <div style="padding:32px 48px;border-top:1px solid var(--ash);background:#080806;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--mist);line-height:1.7;">
+        "€827 in total ad spend. 2.8 million impressions. 2.1 million people reached across Africa. The strategy is what made the difference — not the budget."
+      </p>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;color:var(--ghost);text-transform:uppercase;margin-top:12px;">— Ezra Cheruiyot · Campaign Architect</div>
+    </div>
+
+  </div>
+
+  <!-- More work note -->
+  <div style="margin-top:40px;text-align:center;">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ghost);margin-bottom:16px;">More case studies coming as client permissions are secured.</p>
+    <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20see%20more%20of%20your%20work." target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">Request full portfolio on WhatsApp →</a>
+  </div>
+
+</div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" style="background:var(--warm-white);padding:100px 60px;">
+<div style="max-width:1100px;margin:0 auto;">
+
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+    <span style="display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;"></span>
+    <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">04 — About</span>
+  </div>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);letter-spacing:0.1em;color:var(--ink);font-weight:400;line-height:1;margin-bottom:72px;">The Person<br>Behind the Work</h2>
+
+  <!-- TWO COLUMNS: BIO + PHOTO -->
+  <div style="display:grid;grid-template-columns:1fr 340px;gap:72px;align-items:start;margin-bottom:80px;">
+
+    <div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-weight:300;color:var(--ink);line-height:1.85;margin-bottom:32px;">
+        I'm a Kenyan digital marketing strategist and creative based in Nairobi. I combine the precision of a systems thinker with the instincts of a storyteller — the kind of person who builds a full quarterly growth plan with the same care brought to a single well-crafted caption.
+      </p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--ghost);line-height:1.9;margin-bottom:40px;">
+        My approach to marketing is rooted in a simple belief: strategy before execution, always. I don't run campaigns to fill a calendar. I run them because they're the right move at the right time, for the right reason — and I track every one of them until the data tells me something worth acting on.
+      </p>
+      <div style="width:48px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:40px;"></div>
+
+      <!-- VISION STATEMENT -->
+      <div style="padding:36px 40px;background:var(--ink);margin-bottom:0;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;opacity:0.8;display:flex;align-items:center;gap:10px;">
+          <span style="display:block;width:20px;height:1px;background:var(--gold);opacity:0.5;"></span>
+          The Bigger Vision
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,2vw,21px);font-weight:300;color:var(--parchment);line-height:1.9;margin-bottom:20px;">
+          "I am building towards a future where an African-born ecosystem — combining adventure, storytelling, philosophy, media, and entrepreneurship — helps people feel more alive, free-minded, and connected to themselves."
+        </p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:var(--mist);line-height:1.8;">
+          That mission shapes how I approach every client engagement. I don't just execute campaigns — I help businesses and entrepreneurs understand the <em>why</em> behind what they want to build. Because the right why changes everything that comes after it.
+        </p>
+        <div style="margin-top:20px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;color:var(--ghost);text-transform:uppercase;">Ezra Cheruiyot · Esdras Media</div>
+      </div>
+    </div>
+
+    <!-- PHOTO -->
+    <div style="position:relative;top:8px;">
+      <div style="position:relative;">
+        <div style="position:absolute;top:-12px;right:-12px;width:100%;height:100%;border:1px solid var(--gold);opacity:0.2;pointer-events:none;"></div>
+        <img src="ezra-hero.jpg" alt="Ezra Cheruiyot" style="width:100%;display:block;filter:contrast(1.05) brightness(0.95) saturate(0.9);"/>
+      </div>
+      <div style="margin-top:20px;padding:16px 20px;background:var(--parchment);border:1px solid var(--divider);">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:6px;">Based in</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink);">Nairobi, Kenya · Working globally</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOW I WORK -->
+  <div style="border-top:1px solid var(--divider);padding-top:64px;">
+    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:40px;display:flex;align-items:center;gap:14px;">
+      <span style="display:block;width:28px;height:1px;background:var(--gold);opacity:0.5;"></span>
+      How I work with clients
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--divider);">
+
+      <div style="background:var(--warm-white);padding:36px 32px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.1em;color:var(--ink);margin-bottom:12px;">Deliverables, not hours</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:15px;color:var(--ghost);line-height:1.8;">I don't bill by the clock or track time spent. Every engagement is built around clear deliverables with agreed deadlines — you know exactly what you're getting and when. Results are the only measure that matters.</p>
+      </div>
+
+      <div style="background:var(--warm-white);padding:36px 32px;border-left:1px solid var(--divider);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.1em;color:var(--ink);margin-bottom:12px;">Async-first, globally ready</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:15px;color:var(--ghost);line-height:1.8;">All ongoing work is handled asynchronously — no dependency on meetings to move forward. Calls and real-time sessions are available evenings and weekends (EAT). Distance is not a constraint.</p>
+      </div>
+
+      <div style="background:var(--warm-white);padding:36px 32px;border-left:1px solid var(--divider);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.1em;color:var(--ink);margin-bottom:12px;">Strategy before everything</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:15px;color:var(--ghost);line-height:1.8;">Every project starts with understanding what you're trying to build and why. I won't execute a campaign that doesn't have a clear strategic reason to exist — that discipline is what makes the work worth doing.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══ AI MASTERY ══ -->
+<section id="ai-mastery" style="background:var(--ink);padding:100px 60px;border-top:1px solid var(--ash);">
+<div style="max-width:1100px;margin:0 auto;">
+
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+    <span style="display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;"></span>
+    <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">05 — AI Mastery</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+    <div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);letter-spacing:0.08em;color:var(--parchment);font-weight:400;line-height:0.95;margin-bottom:32px;">Built with AI.<br><span style="color:var(--gold);">Proved,<br>not claimed.</span></h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--mist);line-height:1.8;margin-bottom:40px;">A 16-week live tracker documenting every milestone, every real result, and every deliverable from my Claude AI mastery journey. Not a certificate. Proof of work.</p>
+      <a href="mastery.html" style="display:inline-flex;align-items:center;gap:16px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:18px 40px;text-decoration:none;font-weight:700;">
+        View live proof page
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--ash);">
+      <div style="background:var(--ink);padding:24px 28px;border-top:2px solid var(--gold);">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;opacity:0.8;">Phase 1 · Weeks 1–3</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.08em;color:var(--parchment);margin-bottom:6px;">Prompt craft mastery</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mist);">10+ reusable templates for daily marketing tasks</div>
+      </div>
+      <div style="background:var(--ink);padding:24px 28px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;opacity:0.6;">Phase 2 · Weeks 3–6</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.08em;color:var(--ghost);margin-bottom:6px;">Claude Code fluency</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mist);opacity:0.7;">Reusable landing page system</div>
+      </div>
+      <div style="background:var(--ink);padding:24px 28px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;opacity:0.6;">Phase 3 · Weeks 6–10</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.08em;color:var(--ghost);margin-bottom:6px;">Projects, memory & Cowork</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mist);opacity:0.7;">Configured project + batch automation</div>
+      </div>
+      <div style="background:var(--ink);padding:24px 28px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;opacity:0.6;">Phase 4 · Weeks 10–16</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.08em;color:var(--ghost);margin-bottom:6px;">Building with Claude</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mist);opacity:0.7;">First paying client + documented results</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK OFFICE CALLOUT -->
+  <div style="margin-top:64px;border:1px solid var(--gold);padding:40px 48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.8;">Coming soon · Micro-agency concept</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:0.1em;color:var(--parchment);font-weight:400;line-height:1;margin-bottom:16px;">The Back Office</h3>
+      <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:17px;color:var(--mist);line-height:1.8;max-width:560px;">A premium AI-powered digital marketing service built for Nairobi businesses — strategy, content, ads, and brand assets delivered with the speed of AI and the judgment of a senior marketer. Phase 4 is where it launches.</p>
+    </div>
+    <div style="text-align:right;flex-shrink:0;">
+      <a href="mastery.html" style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;">
+        Track the progress →
+      </a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section style="background:var(--ink);padding:100px 60px;border-top:1px solid var(--ash);">
+<div style="max-width:1100px;margin:0 auto;">
+
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+    <span style="display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;"></span>
+    <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">06 — Contact</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+    <div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,80px);letter-spacing:0.08em;color:var(--parchment);font-weight:400;line-height:0.95;margin-bottom:32px;">Let's Build<br>Something<br><span style="color:var(--gold);">That Lasts.</span></h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:18px;color:var(--mist);line-height:1.8;margin-bottom:48px;">Tell me what you're building, what's not working, or what you've been putting off. We'll figure out the right starting point together.</p>
+      <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:16px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:18px 40px;text-decoration:none;font-weight:700;">
+        Start on WhatsApp
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div>
+      <div style="border:1px solid var(--ash);padding:40px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;opacity:0.8;">Good to know before you reach out</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="padding:16px 0;border-bottom:1px solid var(--ash);">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-bottom:6px;">Response time</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--parchment);">Within 24 hours — usually same evening</div>
+          </div>
+          <div style="padding:16px 0;border-bottom:1px solid var(--ash);">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-bottom:6px;">Calls &amp; meetings</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--parchment);">Evenings &amp; weekends (East Africa Time)</div>
+          </div>
+          <div style="padding:16px 0;border-bottom:1px solid var(--ash);">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-bottom:6px;">Clients accepted</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--parchment);">Global · Remote-first · Any timezone</div>
+          </div>
+          <div style="padding:16px 0;">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;margin-bottom:6px;">Current availability</div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="display:block;width:8px;height:8px;border-radius:50%;background:#4ade80;"></span>
+              <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--parchment);">Taking new clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer style="background:var(--ink);padding:28px 60px;border-top:1px solid var(--ash);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+  <span style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em;font-size:16px;color:var(--ash);">Ezra Cheruiyot</span>
+  <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--ghost);text-transform:uppercase;">Nairobi · Kenya · 2025</span>
+  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--ghost);">Marketing that moves. Design that speaks. Video that stays.</span>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+  var links = menu.querySelectorAll('a');
+  function close(){
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  btn.addEventListener('click',function(){
+    var open = menu.classList.toggle('open');
+    btn.classList.toggle('open',open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  links.forEach(function(a){a.addEventListener('click',close);});
+})();
+</script>
+</body>
+</html>
+
+
