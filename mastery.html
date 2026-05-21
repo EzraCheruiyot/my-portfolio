@@ -126,6 +126,34 @@ nav{position:sticky;top:0;z-index:100;background:var(--ink);display:flex;align-i
 .pitch-block-text{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--parchment);line-height:1.8;}
 .pitch-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--ash);}
 
+/* VERIFIED PROOF */
+.verified-empty{text-align:center;padding:64px 0;font-family:'Space Mono',monospace;font-size:10px;color:var(--ash);letter-spacing:0.15em;text-transform:uppercase;}
+.verified-last{border:1px solid var(--gold);padding:28px 32px;margin-bottom:24px;position:relative;}
+.verified-last-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.8;}
+.verified-last-concept{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.08em;color:var(--parchment);line-height:1;margin-bottom:10px;}
+.verified-last-built{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--mist);line-height:1.7;margin-bottom:16px;}
+.verified-last-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.verified-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:4px 12px;font-weight:700;}
+.verified-date{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--mist);}
+.verified-log-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin:32px 0 16px;opacity:0.7;}
+.verified-entry{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;border:1px solid var(--ash);margin-bottom:8px;}
+.verified-entry-dot{width:6px;height:6px;background:var(--gold);flex-shrink:0;margin-top:7px;}
+.verified-entry-body{flex:1;}
+.verified-entry-concept{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--parchment);line-height:1.5;margin-bottom:4px;}
+.verified-entry-built{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mist);line-height:1.5;margin-bottom:8px;}
+.verified-entry-footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.verified-entry-date{font-family:'Space Mono',monospace;font-size:9px;color:var(--mist);letter-spacing:0.1em;}
+.verified-tag{font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border:1px solid var(--ash);color:var(--ash);letter-spacing:0.08em;}
+.report-section-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin:40px 0 16px;opacity:0.7;display:flex;align-items:center;gap:14px;}
+.report-section-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold);opacity:0.5;}
+.report-block{border:1px solid var(--ash);padding:24px 28px;margin-bottom:12px;}
+.report-block-date{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;opacity:0.8;}
+.report-block-focus{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:var(--parchment);margin-bottom:16px;}
+.report-block-caps{list-style:none;margin-bottom:16px;}
+.report-block-caps li{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--mist);line-height:1.7;padding:6px 0;border-bottom:1px solid var(--ash);display:flex;gap:10px;}
+.report-block-caps li::before{content:'→';color:var(--gold);opacity:0.7;flex-shrink:0;}
+.report-block-gap{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ash);margin-top:12px;}
+
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ash);margin-bottom:32px;}
 .about-card{background:var(--ink);padding:28px 24px;}
@@ -234,6 +262,7 @@ footer{border-top:1px solid var(--ash);padding:24px 60px;display:flex;justify-co
     <button class="tab-btn" onclick="switchTab('portfolio',this)">Portfolio</button>
     <button class="tab-btn" onclick="switchTab('pitch',this)">Client pitch</button>
     <button class="tab-btn" onclick="switchTab('about',this)">About</button>
+    <button class="tab-btn" onclick="switchTab('verified',this);loadVerified();">Verified proof</button>
   </div>
 </div>
 
@@ -326,6 +355,12 @@ footer{border-top:1px solid var(--ash);padding:24px 60px;display:flex;justify-co
       <div class="back-office-title">The Back Office</div>
       <p class="back-office-text">A premium AI-powered digital marketing service built for Nairobi businesses — strategy, content, ads, and brand assets delivered with the speed of AI and the judgment of a senior marketer. Not a freelancer. Not an agency. Something in between, and better than both. Phase 4 of this mastery plan is where it launches.</p>
     </div>
+  </div>
+
+  <!-- VERIFIED PROOF -->
+  <div id="view-verified" class="view">
+    <div class="section-label">Comprehension-verified learning log</div>
+    <div id="verified-content"><div class="verified-empty">Loading verified entries...</div></div>
   </div>
 
 </main>
@@ -563,6 +598,68 @@ function copyPitch(){
   const blocks=document.querySelectorAll('.pitch-block-text');
   const text=Array.from(blocks).map(b=>b.textContent).join('\n\n');
   navigator.clipboard.writeText(text).then(()=>alert('Pitch copied to clipboard!')).catch(()=>alert('Select the text manually to copy.'));
+}
+
+
+async function loadVerified(){
+  const el=document.getElementById('verified-content');
+  try{
+    const res=await fetch('progress.json?t='+Date.now());
+    if(!res.ok)throw new Error('not found');
+    const data=await res.json();
+    renderVerified(data);
+  }catch(e){
+    el.innerHTML='<div class="verified-empty">No verified entries yet — complete your first comprehension check to see results here</div>';
+  }
+}
+
+function renderVerified(data){
+  const el=document.getElementById('verified-content');
+  if(!data.entries||!data.entries.length){
+    el.innerHTML='<div class="verified-empty">No verified entries yet — complete your first comprehension check to see results here</div>';
+    return;
+  }
+  const entries=[...data.entries].reverse();
+  const last=entries[0];
+  const log=entries.slice(1);
+  let html=`
+    <div class="verified-last">
+      <div class="verified-last-label">Most recent · Verified entry</div>
+      <div class="verified-last-concept">${last.concept}</div>
+      <div class="verified-last-built">${last.built}</div>
+      <div class="verified-last-meta">
+        <span class="verified-badge">✓ Verified by Claude Code</span>
+        <span class="verified-date">${last.date}</span>
+        <span class="verified-date">Phase ${last.phase}</span>
+      </div>
+    </div>`;
+  if(log.length){
+    html+=`<div class="verified-log-label">Previous verified entries</div>`;
+    html+=log.map(e=>`
+      <div class="verified-entry">
+        <div class="verified-entry-dot"></div>
+        <div class="verified-entry-body">
+          <div class="verified-entry-concept">${e.concept}</div>
+          <div class="verified-entry-built">${e.built}</div>
+          <div class="verified-entry-footer">
+            <span class="verified-entry-date">${e.date}</span>
+            <span class="verified-entry-date">Phase ${e.phase}</span>
+            ${(e.tags||[]).map(t=>`<span class="verified-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+      </div>`).join('');
+  }
+  if(data.capabilityReports&&data.capabilityReports.length){
+    html+=`<div class="report-section-label">Capability reports</div>`;
+    html+=[...data.capabilityReports].reverse().map(r=>`
+      <div class="report-block">
+        <div class="report-block-date">${r.date}</div>
+        <div class="report-block-focus">${r.sessionFocus}</div>
+        <ul class="report-block-caps">${(r.capabilities||[]).map(c=>`<li>${c}</li>`).join('')}</ul>
+        ${r.gaps&&r.gaps.length?`<div class="report-block-gap">Gap noted: ${r.gaps.join(' · ')}</div>`:''}
+      </div>`).join('');
+  }
+  el.innerHTML=html;
 }
 
 load();updateStats();renderProgress();renderWins();renderPortfolio();renderPitch();

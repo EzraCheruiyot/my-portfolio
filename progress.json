@@ -1,0 +1,32 @@
+{
+  "lastUpdated": "21 May 2026",
+  "stats": {
+    "verifiedCount": 1,
+    "currentPhase": 2
+  },
+  "entries": [
+    {
+      "id": 1,
+      "date": "21 May 2026",
+      "concept": "Git, GitHub & Netlify deployment pipeline",
+      "built": "Initialised a local Git repository, connected it to a GitHub remote, and configured Netlify to auto-deploy from the main branch — portfolio now goes live on every push",
+      "phase": 2,
+      "tags": ["Git", "GitHub", "Netlify", "Terminal", "VS Code"]
+    }
+  ],
+  "capabilityReports": [
+    {
+      "id": 1,
+      "date": "21 May 2026",
+      "sessionFocus": "Git version control and Netlify deployment pipeline",
+      "capabilities": [
+        "I can initialise a Git repository from scratch using git init and make a first commit",
+        "I can connect a local project to a GitHub remote and push files with git push",
+        "I can link Netlify to a GitHub repository so every push auto-deploys the live site",
+        "I understand the difference between building with Claude Code and deploying with git push — and that Claude Code can run the git commands itself",
+        "I understand that progress.json is the data layer that connects my learning to my live portfolio"
+      ],
+      "gaps": ["Explore git branching and pull requests in a future session"]
+    }
+  ]
+}
