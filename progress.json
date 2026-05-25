@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "21 May 2026",
+  "lastUpdated": "25 May 2026",
   "stats": {
-    "verifiedCount": 1,
+    "verifiedCount": 2,
     "currentPhase": 2
   },
   "entries": [
@@ -12,6 +12,14 @@
       "built": "Initialised a local Git repository, connected it to a GitHub remote, and configured Netlify to auto-deploy from the main branch — portfolio now goes live on every push",
       "phase": 2,
       "tags": ["Git", "GitHub", "Netlify", "Terminal", "VS Code"]
+    },
+    {
+      "id": 2,
+      "date": "25 May 2026",
+      "concept": "Understanding the deployment pipeline under pressure",
+      "built": "Explained the full commit-push-deploy relay from memory, reasoned correctly through a GitHub failure scenario, and distinguished clearly between Claude Code, Git, GitHub and Netlify",
+      "phase": 2,
+      "tags": ["Git", "GitHub", "Netlify", "Claude Code", "Deployment"]
     }
   ],
   "capabilityReports": [
@@ -27,6 +35,17 @@
         "I understand that progress.json is the data layer that connects my learning to my live portfolio"
       ],
       "gaps": ["Explore git branching and pull requests in a future session"]
+    },
+    {
+      "id": 2,
+      "date": "25 May 2026",
+      "sessionFocus": "Git, GitHub and Netlify — the deployment pipeline",
+      "capabilities": [
+        "I can explain the full journey of a change from my local computer to a live website — commit, push, deploy — and describe what each step does and why",
+        "I can reason through failure scenarios in the pipeline — for example, knowing that a GitHub outage after a commit but before a push leaves the live site unchanged but the local files safe",
+        "I can clearly distinguish between Claude Code (the agent that runs commands), Git (the system that stores snapshots), GitHub (the cloud copy), and Netlify (the publisher that watches GitHub and rebuilds the site)"
+      ],
+      "gaps": ["Stay conscious of saying 'Claude Code did it' when the precise answer is 'Claude Code told Git to do it'"]
     }
   ]
 }
