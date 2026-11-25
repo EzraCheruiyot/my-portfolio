@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Thank you — The Back Office</title>
+<meta name="robots" content="noindex"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-wordmark">The Back Office</span><span class="nav-sub">AI marketing that proves your ROI</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html" class="nav-cta">Start a Project</a>
+  </div>
+  <button class="nav-hamburger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobile">
+  <a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html" class="mob-cta">Start a Project</a>
+</div>
+
+<section class="sec-dark" style="min-height:70vh;display:flex;align-items:center;text-align:center">
+  <div class="wrap">
+    <div class="kicker center">Message received</div>
+    <h1 class="h-xl" style="color:var(--parchment);margin:14px 0 22px">Thank you.</h1>
+    <p class="serif-lead" style="max-width:44ch;margin:0 auto 34px">I've got your enquiry and I'll reply within a day. If it's urgent, WhatsApp is faster.</p>
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+      <a href="https://wa.me/254746604694" target="_blank" rel="noopener" class="btn-primary">Message on WhatsApp</a>
+      <a href="index.html" class="btn-ghost">Back to home →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="border-top:none;padding-top:0"><span>© 2026 The Back Office · Nairobi, Kenya</span><span>Built by <a href="about.html">Ezra Cheruiyot</a></span></div>
+  </div>
+</footer>
+<script>
+  var b=document.getElementById('burger'),m=document.getElementById('mobile');
+  b.addEventListener('click',function(){b.classList.toggle('open');m.classList.toggle('open')});
+</script>
+</body>
+</html>

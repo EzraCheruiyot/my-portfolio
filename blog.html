@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Notes — The Back Office</title>
+<meta name="description" content="Short, useful notes on digital marketing, measurement, and growth for Nairobi businesses — from The Back Office."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+  .post-card{display:block;text-decoration:none;background:var(--parchment);border:1px solid var(--divider);padding:32px 30px;transition:border-color .2s,transform .2s}
+  .post-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .post-card .cat{font-family:var(--mono);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+  .post-card h3{font-size:24px;color:var(--ink);margin-bottom:12px;line-height:1.15}
+  .post-card p{font-weight:300;color:var(--ghost);line-height:1.7;font-size:15px;margin-bottom:18px}
+  .post-card .meta{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--mist);text-transform:uppercase}
+  .soon{opacity:.55;pointer-events:none}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-wordmark">The Back Office</span><span class="nav-sub">AI marketing that proves your ROI</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html" class="active">Blog</a><a href="contact.html" class="nav-cta">Start a Project</a>
+  </div>
+  <button class="nav-hamburger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobile">
+  <a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html" class="mob-cta">Start a Project</a>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="kicker">Notes</div>
+    <h1 class="h-lg">Marketing, measured</h1>
+    <p>Short, useful notes on getting customers online — and proving it worked. Written for Nairobi founders and anyone selling to real people.</p>
+  </div>
+</header>
+
+<section class="sec-light">
+  <div class="wrap">
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;background:transparent">
+      <a class="post-card" href="blog/the-number-that-matters.html">
+        <div class="cat">Measurement</div>
+        <h3>The one marketing number most businesses ignore</h3>
+        <p>Likes and followers feel good. But there's a single number that tells you whether your marketing is actually making money — and most businesses never look at it.</p>
+        <div class="meta">Nov 2026 · 4 min read</div>
+      </a>
+      <div class="post-card soon">
+        <div class="cat">Lead Generation</div>
+        <h3>You don't have a traffic problem</h3>
+        <p>Why "I need more followers" is almost never the real issue — and what to fix instead.</p>
+        <div class="meta">Coming soon</div>
+      </div>
+      <div class="post-card soon">
+        <div class="cat">Offers</div>
+        <h3>Make an offer people can't ignore</h3>
+        <p>The simple equation behind why anyone says yes — and how to rebuild your offer around it.</p>
+        <div class="meta">Coming soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="foot-word">The Back Office</div><p class="foot-tag">AI-powered marketing for Nairobi businesses — built to be measured, not just admired. Founded by Ezra Cheruiyot.</p></div>
+      <div><div class="foot-h">Explore</div><div class="foot-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a></div></div>
+      <div><div class="foot-h">Get in touch</div><div class="foot-links"><a href="contact.html">Start a project</a><a href="https://wa.me/254746604694" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:ezracheruu05@gmail.com">Email</a><a href="https://linkedin.com/in/ezra-cheruiyot" target="_blank" rel="noopener">LinkedIn</a></div></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 The Back Office · Nairobi, Kenya</span><span>Built by <a href="about.html">Ezra Cheruiyot</a></span></div>
+  </div>
+</footer>
+<script>
+  var b=document.getElementById('burger'),m=document.getElementById('mobile');
+  b.addEventListener('click',function(){b.classList.toggle('open');m.classList.toggle('open')});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');m.classList.remove('open')})});
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Start a Project — The Back Office</title>
+<meta name="description" content="Tell The Back Office about your business and what you're trying to grow. First conversation is free. AI marketing that proves your ROI, Nairobi."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-wordmark">The Back Office</span><span class="nav-sub">AI marketing that proves your ROI</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html" class="nav-cta active">Start a Project</a>
+  </div>
+  <button class="nav-hamburger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobile">
+  <a href="index.html">Home</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html" class="mob-cta">Start a Project</a>
+</div>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="kicker">Start a project</div>
+    <h1 class="h-lg">Tell me what you're<br>trying to grow</h1>
+    <p>The first conversation is free. Share a little about your business and the goal — I'll come back with whether and how I can help.</p>
+  </div>
+</header>
+
+<section class="sec-light">
+  <div class="wrap">
+    <div class="split">
+      <!-- FORM -->
+      <div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+          <input type="hidden" name="form-name" value="contact"/>
+          <p hidden><label>Leave this empty: <input name="bot-field"/></label></p>
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required/></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required/></div>
+          <div class="field"><label for="business">Business / brand</label><input id="business" name="business" type="text"/></div>
+          <div class="field"><label for="service">What do you need?</label>
+            <select id="service" name="service">
+              <option>Digital Marketing Strategy</option>
+              <option>Meta Ads Management</option>
+              <option>Content Creation</option>
+              <option>Email Marketing</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+          <div class="field"><label for="budget">Monthly budget (optional)</label>
+            <select id="budget" name="budget">
+              <option>Not sure yet</option>
+              <option>Under KES 20,000</option>
+              <option>KES 20,000 – 40,000</option>
+              <option>KES 40,000 – 80,000</option>
+              <option>KES 80,000+</option>
+            </select>
+          </div>
+          <div class="field"><label for="message">What are you trying to grow?</label><textarea id="message" name="message" required></textarea></div>
+          <button type="submit" class="btn-primary">Send enquiry</button>
+        </form>
+      </div>
+
+      <!-- DIRECT -->
+      <div>
+        <div class="contact-card" style="margin-bottom:16px">
+          <div class="foot-h">Prefer to chat?</div>
+          <p style="color:var(--mist);font-weight:300;line-height:1.8;margin-bottom:20px;font-size:15px">WhatsApp is the fastest way to reach me — most replies within a day.</p>
+          <div class="foot-links">
+            <a href="https://wa.me/254746604694?text=Hi%20Ezra%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">→ WhatsApp · +254 746 604 694</a>
+            <a href="mailto:ezracheruu05@gmail.com">→ Email</a>
+            <a href="https://linkedin.com/in/ezra-cheruiyot" target="_blank" rel="noopener">→ LinkedIn</a>
+          </div>
+        </div>
+        <div style="padding:28px 32px;background:var(--parchment);border:1px solid var(--divider)">
+          <div class="kicker" style="margin-bottom:16px">What happens next</div>
+          <ol style="list-style:none;counter-reset:s">
+            <li style="counter-increment:s;position:relative;padding-left:34px;margin-bottom:14px;font-size:15px;color:var(--ghost);line-height:1.6"><span style="position:absolute;left:0;top:0;font-family:var(--display);color:var(--gold-dark);font-size:20px">1</span>I read your enquiry and reply within a day.</li>
+            <li style="counter-increment:s;position:relative;padding-left:34px;margin-bottom:14px;font-size:15px;color:var(--ghost);line-height:1.6"><span style="position:absolute;left:0;top:0;font-family:var(--display);color:var(--gold-dark);font-size:20px">2</span>A free first call to understand the goal — no pitch.</li>
+            <li style="counter-increment:s;position:relative;padding-left:34px;font-size:15px;color:var(--ghost);line-height:1.6"><span style="position:absolute;left:0;top:0;font-family:var(--display);color:var(--gold-dark);font-size:20px">3</span>A clear proposal with deliverables, timeline, and price.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="foot-word">The Back Office</div><p class="foot-tag">AI-powered marketing for Nairobi businesses — built to be measured, not just admired. Founded by Ezra Cheruiyot.</p></div>
+      <div><div class="foot-h">Explore</div><div class="foot-links"><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="blog.html">Blog</a></div></div>
+      <div><div class="foot-h">Get in touch</div><div class="foot-links"><a href="contact.html">Start a project</a><a href="https://wa.me/254746604694" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:ezracheruu05@gmail.com">Email</a><a href="https://linkedin.com/in/ezra-cheruiyot" target="_blank" rel="noopener">LinkedIn</a></div></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 The Back Office · Nairobi, Kenya</span><span>Built by <a href="about.html">Ezra Cheruiyot</a></span></div>
+  </div>
+</footer>
+<script>
+  var b=document.getElementById('burger'),m=document.getElementById('mobile');
+  b.addEventListener('click',function(){b.classList.toggle('open');m.classList.toggle('open')});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');m.classList.remove('open')})});
+</script>
+</body>
+</html>
